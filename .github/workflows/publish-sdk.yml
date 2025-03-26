@@ -1,0 +1,99 @@
+name: Publish NPM package
+
+on:
+  workflow_dispatch:
+
+permissions:
+    contents: read
+    packages: write
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version-file: .nvmrc
+                  registry-url: 'https://npm.pkg.github.com/'
+            - run: yarn install
+
+            - name: Install playwright dependencies (for sample Vite dApp tests)
+              run: yarn playwright install
+
+            - run: yarn build
+
+            - name: Start Thor solo node
+              id: start-solo
+              run: yarn start-thor-solo
+
+            - name: Run Unit & Integration tests
+              run: yarn test
+
+            - name: Stop Thor solo node
+              id: stop-solo
+              run: yarn stop-thor-solo
+
+            - name: Publish errors
+              run: |
+                  cd packages/errors
+                  yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+                  yarn publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+            - name: Publish core
+              run: |
+                  cd packages/core
+                  yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+                  yarn publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+                  
+            - name: Publish network
+              run: |
+                  cd packages/network
+                  yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+                  yarn publish
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+            - name: Publish Hardhat Plugin
+              run: |
+                cd packages/hardhat-plugin
+                yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+                yarn publish
+              env:
+                NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+            - name: Publish logging
+              run: |
+                cd packages/logging
+                yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+                yarn publish
+              env:
+                NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+            
+            - name: Publish RPC proxy
+              run: |
+                cd packages/rpc-proxy
+                yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+                yarn publish
+              env:
+                NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+            - name: Publish Ethers Adapter
+              run: |
+                cd packages/ethers-adapter
+                yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+                yarn publish
+              env:
+                NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+            - name: Publish AWS KMS Adapter
+              run: |
+                cd packages/aws-kms-adapter
+                yarn version --no-git-tag-version --new-version ${{ github.ref_name }}
+                yarn publish
+              env:
+                NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

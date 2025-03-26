@@ -1,0 +1,66 @@
+{
+  "name": "@vechain/sdk-rpc-proxy",
+  "version": "1.1.1",
+  "description": "Proxy Thor's RESTful API to Eth JSON-RPC",
+  "author": "VeChain Foundation",
+  "license": "MIT",
+  "homepage": "https://github.com/vechain/vechain-sdk-js",
+  "repository": {
+    "type": "git",
+    "url": "github:vechain/vechain-sdk-js"
+  },
+  "keywords": [
+    "VeChain",
+    "RPC",
+    "proxy"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "rpc-proxy": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "src",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rm -rf ./dist && tsup-node src/index.ts --format cjs,esm --dts",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "start": "node dist/index.js",
+    "test:e2e": "cross-env DEBUG=\"testcontainers*\" jest tests/e2e_rpc_proxy.solo.test.ts"
+  },
+  "dependencies": {
+    "@vechain/sdk-core": "1.1.0",
+    "@vechain/sdk-errors": "1.1.0",
+    "@vechain/sdk-logging": "1.1.0",
+    "@vechain/sdk-network": "1.1.0",
+    "commander": "^12.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.23.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.7.9",
+    "@typescript-eslint/eslint-plugin": "6.21.0",
+    "@typescript-eslint/parser": "6.21.0",
+    "axios": "^1.8.4",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.23.0",
+    "globals": "^16.0.0",
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0",
+    "testcontainers": "^10.14.0",
+    "ts-jest": "^29.3.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.28.0"
+  }
+}
