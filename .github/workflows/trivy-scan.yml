@@ -1,4 +1,4 @@
-name: RPC Proxy - Docker build, scan and push
+name: Run Trivy Scan
 
 on:
    workflow_call:
@@ -6,7 +6,6 @@ on:
 env:
   DOCKERFILE_LOCATION: "docker/rpc-proxy/Dockerfile"
   DOCKER_IMAGE_NAME: "vechain/sdk-rpc-proxy"
-  DOCKER_IMAGE_VERSION: "v1.1.1"
 
 permissions:
   contents: read
@@ -16,7 +15,7 @@ permissions:
 
 
 jobs:
-  docker:
+  trivy-scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -30,25 +29,18 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub
-        if: ${{ github.event_name != 'pull_request' }}
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
       - name: Build and export to Docker
         uses: docker/build-push-action@v6
         with:
           context: .
           file: ${{ env.DOCKERFILE_LOCATION }}
           load: true
-          tags: "${{ env.DOCKER_IMAGE_NAME }}:${{env.DOCKER_IMAGE_VERSION}}"
+          tags: "${{ env.DOCKER_IMAGE_NAME }}:for-trivy-scan"
           labels: |
             maintainer=vechain
             description="RPC Proxy for vechain Thor"
             build_timestamp=${{ github.event.after }}
-            source=https://github.com/vechain/vechain-sdk-js
+            source=https://github.com/vechain/sdk-rpc-proxy
             commit_hash=${{ github.sha }}
 
       - name: Create .trivyignore file
@@ -71,13 +63,3 @@ jobs:
         env:
           # See https://github.com/aquasecurity/trivy/discussions/7538
           TRIVY_DB_REPOSITORY: public.ecr.aws/aquasecurity/trivy-db:2
-
-      - name: Build and push
-        if: ${{ github.event_name != 'pull_request' }}
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: ${{env.DOCKERFILE_LOCATION}}
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: "${{ env.DOCKER_IMAGE_NAME }}:${{env.DOCKER_IMAGE_VERSION}}"

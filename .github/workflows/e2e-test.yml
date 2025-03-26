@@ -1,11 +1,10 @@
-name: Build and Lint
+name: E2E Test
 
 on:
     workflow_call:
 
 jobs:
-    build:
-        name: Build & Lint
+    test:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
@@ -15,12 +14,13 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: lts/*
-
+                  
             - name: Install & Patch packages
               run: yarn install
-
-            - name: Lint
-              run: yarn lint
-
+            
             - name: Build
               run: yarn build
+
+            - name: Run E2E RPC Proxy tests
+              run: |
+                yarn test:e2e
