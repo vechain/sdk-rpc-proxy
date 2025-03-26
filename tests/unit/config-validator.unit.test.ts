@@ -2,13 +2,13 @@ import { describe, test } from '@jest/globals';
 import {
     checkValidConfigurationFile,
     getConfigObjectFromFile
-} from '../../../src/utils';
+} from '../../src/utils';
 import {
     correctConfigurationFilePathFixture,
     invalidJSONConfigurationFilePathFixture,
     invalidParametersConfigurationFilePathFixture,
     invalidSemanticConfigurationFilePathFixture
-} from '../../fixture';
+} from '../fixture';
 import {
     InvalidConfigurationFile,
     InvalidConfigurationFilePath

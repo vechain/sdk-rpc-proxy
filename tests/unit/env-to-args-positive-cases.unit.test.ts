@@ -1,5 +1,5 @@
 import { describe, test } from '@jest/globals';
-import { getArgsFromEnv } from '../../../src/utils';
+import { getArgsFromEnv } from '../../src/utils';
 
 /**
  * Environment variables to command line arguments positive cases tests

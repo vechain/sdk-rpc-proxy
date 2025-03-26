@@ -1,9 +1,8 @@
 import { describe, test } from '@jest/globals';
-import { getOptionsFromCommandLine } from '../../../src/utils';
+import { getOptionsFromCommandLine } from '../../src/utils';
 
 /**
  * Args options tests
- * @group unit/utils/args-options
  */
 describe('Args options tests', () => {
     /**

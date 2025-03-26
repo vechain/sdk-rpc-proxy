@@ -24,13 +24,7 @@ Both ways of using can be configured via a configuration file or using command l
 
 ## Starting the Proxy 
 
-To install the RPC proxy for NPX useage, use the following command:
-
-``` bash
-yarn add @vechain/sdk-rpc-proxy
-```
-
-To start the proxy, run:
+To start the proxy with default configuration, clone this repository and run:
 
 ``` bash
 npx rpc-proxy

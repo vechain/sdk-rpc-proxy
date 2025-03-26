@@ -1,7 +1,8 @@
 name: Check for leaks in secrets
 on:
-    release:
-      types: [published]
+    pull_request:
+      branches:
+        - 'main'
 
 permissions:
   contents: read # This is required for actions/checkout

@@ -32,7 +32,8 @@
     "lint": "eslint src/**/*.ts",
     "format": "prettier --write src/**/*.ts",
     "start": "node dist/index.js",
-    "test:e2e": "cross-env DEBUG=\"testcontainers*\" jest tests/e2e_rpc_proxy.solo.test.ts"
+    "test:e2e": "cross-env DEBUG=\"testcontainers*\" jest tests/e2e/e2e_rpc_proxy.solo.test.ts",
+    "test:unit": "jest --testPathPattern=\"tests/unit/.*\\.unit\\.test\\.ts$\""
   },
   "dependencies": {
     "@vechain/sdk-core": "1.1.0",
