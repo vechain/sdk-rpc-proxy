@@ -9,7 +9,7 @@ import {
     VeChainProvider
 } from '@vechain/sdk-network';
 import cors from 'cors';
-import express, { type Express, type Request, type Response } from 'express';
+import express, { type Express, type Request, type Response, type ErrorRequestHandler } from 'express';
 import defaultProxyConfig from '../default-proxy-config.json';
 import packageJson from '../package.json';
 import { type Config, type RequestBody } from './types';
@@ -99,6 +99,33 @@ function startProxy(): void {
         (cors as (options: cors.CorsOptions) => express.RequestHandler)({})
     );
     app.use(express.json());
+
+    // Fix the error handling middleware with proper types
+    const errorHandler: ErrorRequestHandler = (error, req, res, next) => {
+        if (error instanceof SyntaxError && 'status' in error && error.status === 400) {
+            VeChainSDKLogger('error').log(
+                new JSONRPCInternalError(
+                    'parse',
+                    'Error parsing JSON request',
+                    { body: req.body },
+                    error as Error
+                )
+            );
+            
+            res.status(200).json({
+                jsonrpc: '2.0',
+                error: {
+                    code: -32700,
+                    message: 'Parse error: Invalid JSON'
+                },
+                id: null
+            });
+        } else {
+            next(error);
+        }
+    };
+
+    app.use(errorHandler);
 
     app.get('/healthcheck', handleHealthcheck);
     app.post('*', handleRequest);
