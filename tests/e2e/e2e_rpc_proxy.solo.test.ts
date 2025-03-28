@@ -948,5 +948,25 @@ describe('RPC Proxy endpoints', () => {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
             expect(response.data.error.message).toBe('Method not found');
         });
+
+        it('malformed JSON request', async () => {
+            const response = await axios.post(RPC_PROXY_URL, 
+                // Send invalid JSON string
+                '{"jsonrpc": "2.0", "method": "eth_call", "params": [], "id": 1', 
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    // Need to tell axios not to parse/stringify the body
+                    transformRequest: [(data) => data],
+                    // Need to handle the error response
+                    validateStatus: () => true
+                }
+            );
+
+            expect(response.status).toBe(200);
+            expect(response.data).toHaveProperty('error');
+            expect(response.data.error.code).toBe(-32700);
+            expect(response.data.error.message).toBe('Parse error: Invalid JSON');
+            expect(response.data.id).toBeNull();
+        });
     });
 });
