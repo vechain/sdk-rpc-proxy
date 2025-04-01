@@ -299,8 +299,8 @@ The following mappings are performed by the RPC proxy
 
 The method `eth_chainId` returns:
 
-* `0x186a9` for mainnet
-* `0x186aa` for testnet
+* `0x1b4a` for mainnet
+* `0xb127` for testnet
 * for solo or other custom networks it returns the _chainTag_ (the last byte of the genesis block id)
 
 
