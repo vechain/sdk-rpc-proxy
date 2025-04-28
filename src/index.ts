@@ -96,7 +96,9 @@ function startProxy(): void {
     const app: Express = express();
     app.disable('x-powered-by');
     app.use(
-        (cors as (options: cors.CorsOptions) => express.RequestHandler)({})
+        (cors as (options: cors.CorsOptions) => express.RequestHandler)({
+            origin: '*'
+        })
     );
     app.use(express.json());
 
