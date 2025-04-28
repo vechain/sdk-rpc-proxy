@@ -1,13 +1,14 @@
 name: Release to docker hub
 
 on:
-   release:
-      types: [published]
+  workflow_dispatch:
+  release:
+     types: [published]
 
 env:
   DOCKERFILE_LOCATION: "docker/rpc-proxy/Dockerfile"
   DOCKER_IMAGE_NAME: "vechain/sdk-rpc-proxy"
-  DOCKER_IMAGE_VERSION: "v1.1.1"
+  DOCKER_IMAGE_VERSION: "v1.1.2"
 
 permissions:
   contents: read
