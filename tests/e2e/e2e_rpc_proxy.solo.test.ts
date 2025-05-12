@@ -884,7 +884,6 @@ describe('RPC Proxy endpoints', () => {
             );
         });
 
-
         testIf(
             isGalacticaActive,
             'eth_feeHistory method call with invalid params',
@@ -939,6 +938,25 @@ describe('RPC Proxy endpoints', () => {
                 expect(response.data.result).toHaveProperty('baseFeePerGas');
                 expect(response.data.result).toHaveProperty('gasUsedRatio');
                 expect(response.data.result).toHaveProperty('reward');
+            }
+        );
+
+        testIf(
+            isGalacticaActive,
+            'eth_maxPriorityFeePerGas method call',
+            async () => {
+                const response = await axios.post(RPC_PROXY_URL, {
+                    jsonrpc: '2.0',
+                    method: 'eth_maxPriorityFeePerGas',
+                    params: [],
+                    id: 1
+                });
+
+                expect(response.status).toBe(200);
+                expect(response.data).toHaveProperty('result');
+                // The result should be a hex string representing the max priority fee per gas
+                expect(typeof response.data.result).toBe('string');
+                expect(response.data.result).toMatch(/^0x[0-9a-fA-F]+$/);
             }
         );
     });
