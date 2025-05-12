@@ -39,13 +39,12 @@ services:
   # The Thor solo service
   thor-solo:
     container_name: thor-solo
-    image: ${THOR_IMAGE:-ghcr.io/vechain/thor:latest}
+    image: ${THOR_IMAGE:-ghcr.io/vechain/thor:release-galactica-latest}
     ports:
       - "8669:8669"
     command:
       - solo
       - --genesis=/node/config/genesis.json
-      - --on-demand
       - --api-addr=0.0.0.0:8669
       - --api-cors=*
       - --txpool-limit-per-account=256
