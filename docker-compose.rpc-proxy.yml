@@ -45,7 +45,6 @@ services:
     command:
       - solo
       - --genesis=/node/config/genesis.json
-      - --on-demand
       - --api-addr=0.0.0.0:8669
       - --api-cors=*
       - --txpool-limit-per-account=256
@@ -57,6 +56,13 @@ services:
       - type: bind
         source: ./docker/rpc-proxy/config
         target: /node/config
+    healthcheck:
+      # We run the health check using standard UNIX tools so we don't have to
+      # install additional dependencies in the container.
+      test: wget -O- http://localhost:8669/blocks/2
+      interval: 5s
+      timeout: 20s
+      retries: 10
     deploy:
       resources:
         limits:

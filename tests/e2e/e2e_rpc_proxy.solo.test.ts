@@ -11,20 +11,6 @@ import {
 let environment: StartedDockerComposeEnvironment;
 const RPC_PROXY_URL = `http://localhost:8545`;
 const genesisChainId = '0xde'; // custom genesis block id as solo is using a custom genesis file
-const testIf = (condition: boolean, ...args: Parameters<typeof test>): void => {
-    if (condition) {
-        test(...args);
-    } else {
-        test.skip(...args);
-    }
-};
-beforeEach(async () => {
-    thorClient = ThorClient.at(RPC_PROXY_URL);
-    isGalacticaActive = await thorClient.forkDetector.detectGalactica();
-});
-
-let thorClient: ThorClient;
-let isGalacticaActive: boolean;
 
 beforeAll(async () => {
     environment = await new DockerComposeEnvironment(
@@ -884,81 +870,65 @@ describe('RPC Proxy endpoints', () => {
             );
         });
 
-        testIf(
-            isGalacticaActive,
-            'eth_feeHistory method call with invalid params',
-            async () => {
-                // Test with invalid blockCount
-                const response = await axios.post(RPC_PROXY_URL, {
-                    jsonrpc: '2.0',
-                    method: 'eth_feeHistory',
-                    params: [0, 'latest', [25, 75]], // blockCount must be > 0
-                    id: 1
-                });
+        it('eth_feeHistory method call with invalid params', async () => {
+            // Test with invalid blockCount
+            const response = await axios.post(RPC_PROXY_URL, {
+                jsonrpc: '2.0',
+                method: 'eth_feeHistory',
+                params: [0, 'latest', [25, 75]], // blockCount must be > 0
+                id: 1
+            });
 
-                expect(response.status).toBe(200);
-                expect(response.data).toHaveProperty('error');
-                expect(response.data.error.code).toBe(-32004);
-            }
-        );
+            expect(response.status).toBe(200);
+            expect(response.data).toHaveProperty('error');
+            expect(response.data.error.code).toBe(-32602);
+        });
 
-        testIf(
-            isGalacticaActive,
-            'eth_feeHistory method call with missing params',
-            async () => {
-                // Test with missing required params
-                const response = await axios.post(RPC_PROXY_URL, {
-                    jsonrpc: '2.0',
-                    method: 'eth_feeHistory',
-                    params: ['latest'], // Missing blockCount
-                    id: 1
-                });
+        it('eth_feeHistory method call with missing params', async () => {
+            // Test with missing required params
+            const response = await axios.post(RPC_PROXY_URL, {
+                jsonrpc: '2.0',
+                method: 'eth_feeHistory',
+                params: ['latest'], // Missing blockCount
+                id: 1
+            });
 
-                expect(response.status).toBe(200);
-                expect(response.data).toHaveProperty('error');
-                expect(response.data.error.code).toBe(-32602);
-            }
-        );
+            expect(response.status).toBe(200);
+            expect(response.data).toHaveProperty('error');
+            expect(response.data.error.code).toBe(-32602);
+        });
 
-        testIf(
-            isGalacticaActive,
-            'eth_feeHistory method call',
-            async () => {
-                // Test with valid parameters
-                const response = await axios.post(RPC_PROXY_URL, {
-                    jsonrpc: '2.0',
-                    method: 'eth_feeHistory',
-                    params: [4, 'latest', [25, 75]],
-                    id: 1
-                });
-                // The result should have the expected structure
-                console.log(response.data);
-                expect(response.data).toHaveProperty('result');
-                expect(response.data.result).toHaveProperty('oldestBlock');
-                expect(response.data.result).toHaveProperty('baseFeePerGas');
-                expect(response.data.result).toHaveProperty('gasUsedRatio');
-                expect(response.data.result).toHaveProperty('reward');
-            }
-        );
+        it('eth_feeHistory method call', async () => {
+            // Test with valid parameters
+            const response = await axios.post(RPC_PROXY_URL, {
+                jsonrpc: '2.0',
+                method: 'eth_feeHistory',
+                params: [4, 'latest', [25, 75]],
+                id: 1
+            });
+            // The result should have the expected structure
+            console.log(response.data);
+            expect(response.data).toHaveProperty('result');
+            expect(response.data.result).toHaveProperty('oldestBlock');
+            expect(response.data.result).toHaveProperty('baseFeePerGas');
+            expect(response.data.result).toHaveProperty('gasUsedRatio');
+            expect(response.data.result).toHaveProperty('reward');
+        });
 
-        testIf(
-            isGalacticaActive,
-            'eth_maxPriorityFeePerGas method call',
-            async () => {
-                const response = await axios.post(RPC_PROXY_URL, {
-                    jsonrpc: '2.0',
-                    method: 'eth_maxPriorityFeePerGas',
-                    params: [],
-                    id: 1
-                });
+        it('eth_maxPriorityFeePerGas method call', async () => {
+            const response = await axios.post(RPC_PROXY_URL, {
+                jsonrpc: '2.0',
+                method: 'eth_maxPriorityFeePerGas',
+                params: [],
+                id: 1
+            });
 
-                expect(response.status).toBe(200);
-                expect(response.data).toHaveProperty('result');
-                // The result should be a hex string representing the max priority fee per gas
-                expect(typeof response.data.result).toBe('string');
-                expect(response.data.result).toMatch(/^0x[0-9a-fA-F]+$/);
-            }
-        );
+            expect(response.status).toBe(200);
+            expect(response.data).toHaveProperty('result');
+            // The result should be a hex string representing the max priority fee per gas
+            expect(typeof response.data.result).toBe('string');
+            expect(response.data.result).toMatch(/^0x[0-9a-fA-F]+$/);
+        });
     });
 
     const notImplementedMethods = [
