@@ -1,6 +1,6 @@
 {
   "name": "@vechain/sdk-rpc-proxy",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Proxy Thor's RESTful API to Eth JSON-RPC",
   "author": "VeChain Foundation",
   "license": "MIT",
@@ -36,10 +36,10 @@
     "test:unit": "jest --testPathPattern=\"tests/unit/.*\\.unit\\.test\\.ts$\""
   },
   "dependencies": {
-    "@vechain/sdk-core": "1.1.0",
-    "@vechain/sdk-errors": "1.1.0",
-    "@vechain/sdk-logging": "1.1.0",
-    "@vechain/sdk-network": "1.1.0",
+    "@vechain/sdk-core": "1.2.0-rc.2",
+    "@vechain/sdk-errors": "1.2.0-rc.2",
+    "@vechain/sdk-logging": "1.2.0-rc.2",
+    "@vechain/sdk-network": "1.2.0-rc.2",
     "commander": "^12.1.0",
     "cors": "^2.8.5",
     "express": "^4.21.2"
@@ -50,8 +50,8 @@
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.7.9",
-    "@typescript-eslint/eslint-plugin": "6.21.0",
-    "@typescript-eslint/parser": "6.21.0",
+    "@typescript-eslint/eslint-plugin": "8.0.0",
+    "@typescript-eslint/parser": "8.0.0",
     "axios": "^1.8.4",
     "cross-env": "^7.0.3",
     "eslint": "^9.23.0",
@@ -63,5 +63,6 @@
     "tsup": "^8.3.0",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.28.0"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
