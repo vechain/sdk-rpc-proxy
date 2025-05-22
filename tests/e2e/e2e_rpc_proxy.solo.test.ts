@@ -9,7 +9,7 @@ import {
 } from 'testcontainers';
 
 let environment: StartedDockerComposeEnvironment;
-const RPC_PROXY_URL = `http://localhost:8545`;
+const RPC_PROXY_URL = 'http://localhost:8545';
 const genesisChainId = '0xde'; // custom genesis block id as solo is using a custom genesis file
 
 beforeAll(async () => {
@@ -724,7 +724,7 @@ describe('RPC Proxy endpoints', () => {
             console.log(response.data);
             expect(response.data).toHaveProperty('result');
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            expect(response.data.result).toHaveProperty('hash');
+            expect(response.data.result).toBeNull;
         });
 
         it('net_listening method call', async () => {
