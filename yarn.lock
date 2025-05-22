@@ -2212,17 +2212,17 @@ docker-modem@^5.0.6:
     split-ca "^1.0.1"
     ssh2 "^1.15.0"
 
-dockerode@^4.0.4:
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/dockerode/-/dockerode-4.0.4.tgz#3db42ce77241cbe5f20eac44afa933dcff59a268"
-  integrity sha512-6GYP/EdzEY50HaOxTVTJ2p+mB5xDHTMJhS+UoGrVyS6VC+iQRh7kZ4FRpUYq6nziby7hPqWhOrFFUFTMUZJJ5w==
+dockerode@^4.0.5:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/dockerode/-/dockerode-4.0.6.tgz#e53978605346afaaed940a72e24d4e8490d52437"
+  integrity sha512-FbVf3Z8fY/kALB9s+P9epCpWhfi/r0N2DgYYcYpsAUlaTxPjdsitsFobnltb+lyCgAIvf9C+4PSWlTnHlJMf1w==
   dependencies:
     "@balena/dockerignore" "^1.0.2"
     "@grpc/grpc-js" "^1.11.1"
     "@grpc/proto-loader" "^0.7.13"
     docker-modem "^5.0.6"
     protobufjs "^7.3.2"
-    tar-fs "~2.0.1"
+    tar-fs "~2.1.2"
     uuid "^10.0.0"
 
 dunder-proto@^1.0.1:
@@ -4558,7 +4558,7 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-tar-fs@^3.0.6:
+tar-fs@^3.0.7:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-3.0.8.tgz#8f62012537d5ff89252d01e48690dc4ebed33ab7"
   integrity sha512-ZoROL70jptorGAlgAYiLoBLItEKw/fUxg9BSYK/dF/GAGYFJOJJJMvjPAKDJraCXFwadD456FCuvLWgfhMsPwg==
@@ -4569,17 +4569,17 @@ tar-fs@^3.0.6:
     bare-fs "^4.0.1"
     bare-path "^3.0.0"
 
-tar-fs@~2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.0.1.tgz#e44086c1c60d31a4f0cf893b1c4e155dabfae9e2"
-  integrity sha512-6tzWDMeroL87uF/+lin46k+Q+46rAJ0SyPGz7OW7wTgblI273hsBqk2C1j0/xNadNLKDTUL9BukSjB7cwgmlPA==
+tar-fs@~2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.1.2.tgz#425f154f3404cb16cb8ff6e671d45ab2ed9596c5"
+  integrity sha512-EsaAXwxmx8UB7FRKqeozqEPop69DXcmYwTQwXvyAPF352HJsPdkVhvTaDPYqfNgruveJIJy3TA2l+2zj8LJIJA==
   dependencies:
     chownr "^1.1.1"
     mkdirp-classic "^0.5.2"
     pump "^3.0.0"
-    tar-stream "^2.0.0"
+    tar-stream "^2.1.4"
 
-tar-stream@^2.0.0:
+tar-stream@^2.1.4:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tar-stream/-/tar-stream-2.2.0.tgz#acad84c284136b060dc3faa64474aa9aebd77287"
   integrity sha512-ujeqbceABgwMZxEJnk2HDY2DlnUZ+9oEcb1KzTVfYHio0UE6dG71n60d8D2I4qNvleWrrXpmjpt7vZeF1LnMZQ==
@@ -4609,9 +4609,9 @@ test-exclude@^6.0.0:
     minimatch "^3.0.4"
 
 testcontainers@^10.14.0:
-  version "10.22.0"
-  resolved "https://registry.yarnpkg.com/testcontainers/-/testcontainers-10.22.0.tgz#923276a93d3bad87be5dc2c2d7368e8f34cd6437"
-  integrity sha512-W2ExCkFRaRTg0CysIDdHXY7icdOGyTpAkp2feUBDJpSKv6+5+E7my5h3r6jPMwD8hzloFFhBUavN6qlFH3I3Og==
+  version "10.27.0"
+  resolved "https://registry.yarnpkg.com/testcontainers/-/testcontainers-10.27.0.tgz#c8ae8988213c1fd561a752f0fa3dc9d3d83ebc3a"
+  integrity sha512-Y1A2OerjRKUDZ00tAbn1hHHHVeEH+jRgg7a41AF6mLUZPlBIkL8stSQkEzziFp1IK3Id9hPKu7Iq7rIpavkYaw==
   dependencies:
     "@balena/dockerignore" "^1.0.2"
     "@types/dockerode" "^3.3.35"
@@ -4620,14 +4620,14 @@ testcontainers@^10.14.0:
     byline "^5.0.0"
     debug "^4.3.5"
     docker-compose "^0.24.8"
-    dockerode "^4.0.4"
+    dockerode "^4.0.5"
     get-port "^7.1.0"
     proper-lockfile "^4.1.2"
     properties-reader "^2.3.0"
     ssh-remote-port-forward "^1.0.4"
-    tar-fs "^3.0.6"
+    tar-fs "^3.0.7"
     tmp "^0.2.3"
-    undici "^5.28.5"
+    undici "^5.29.0"
 
 text-decoder@^1.1.0:
   version "1.2.3"
@@ -4819,7 +4819,7 @@ undici-types@~6.20.0:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-6.20.0.tgz#8171bf22c1f588d1554d55bf204bc624af388433"
   integrity sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==
 
-undici@^5.28.5:
+undici@^5.29.0:
   version "5.29.0"
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.29.0.tgz#419595449ae3f2cdcba3580a2e8903399bd1f5a3"
   integrity sha512-raqeBD6NQK4SkWhQzeYKd1KmIG6dllBOTt55Rmkt4HtI9mwdWtJljnrXjAFUBLTSN67HWrOIZ3EPF4kjUw80Bg==
