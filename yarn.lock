@@ -1445,10 +1445,10 @@
     "@typescript-eslint/types" "8.28.0"
     eslint-visitor-keys "^4.2.0"
 
-"@vechain/sdk-core@1.2.0-rc.2":
-  version "1.2.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@vechain/sdk-core/-/sdk-core-1.2.0-rc.2.tgz#a4af18a8a793f876a2fd25e8eed1dfd56a152bc5"
-  integrity sha512-X3BHSOnKgvTEnE2nC7J26DSzmchkGwM9XlA0auhBwy6GGDzQDZu/0DX3XEml9eKdJ5KL6+qaOLSHhBOZJYNpwQ==
+"@vechain/sdk-core@1.2.0-rc.3":
+  version "1.2.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vechain/sdk-core/-/sdk-core-1.2.0-rc.3.tgz#cc14f6ebaff34bc3c7643ef5e60a5dcadd9078d8"
+  integrity sha512-DvMhuKmNgKAEhn/WladUhMe/luMMS2lqy/PhEWLIaiaVHwAzwRGmlujK5+YUylCgQqt/frw9SZSPTTOJ9Fs5Yg==
   dependencies:
     "@ethereumjs/rlp" "^5.0.2"
     "@noble/ciphers" "^1.1.1"
@@ -1457,34 +1457,34 @@
     "@scure/base" "^1.2.4"
     "@scure/bip32" "^1.4.0"
     "@scure/bip39" "^1.5.1"
-    "@vechain/sdk-errors" "1.2.0-rc.2"
-    "@vechain/sdk-logging" "1.2.0-rc.2"
+    "@vechain/sdk-errors" "1.2.0-rc.3"
+    "@vechain/sdk-logging" "1.2.0-rc.3"
     abitype "^1.0.6"
     ethers "6.13.4"
     fast-json-stable-stringify "^2.1.0"
     viem "^2.21.45"
 
-"@vechain/sdk-errors@1.2.0-rc.2":
-  version "1.2.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@vechain/sdk-errors/-/sdk-errors-1.2.0-rc.2.tgz#cf546886f027dace6746f3fbca9e209bb48d5500"
-  integrity sha512-B1j9Mwh0qetcHZ3NBZfZV6SV2zlYsSJ3czG+Hl1mv2CrIZUX8Lg3GffcFuXH0Y6q2RYJVe6779bMkQDp0pJPWw==
+"@vechain/sdk-errors@1.2.0-rc.3":
+  version "1.2.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vechain/sdk-errors/-/sdk-errors-1.2.0-rc.3.tgz#c03723474418a0a117702e3307af2b242296a4fc"
+  integrity sha512-zanvUB5yFVqvKGf6gBExc2A9+KIj11xw5BjycNhNCp78jLgjGo/fMLCOgt3FMXE5jhvPyIvSfTzd3MOAOnmK/Q==
 
-"@vechain/sdk-logging@1.2.0-rc.2":
-  version "1.2.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@vechain/sdk-logging/-/sdk-logging-1.2.0-rc.2.tgz#2334a430f58c01d392715db1e54381d0092eb897"
-  integrity sha512-Re/MVwnkkM6WS7RgD2LvU0KnsnjhN9PCJ4objsVKGmWMZac6RXjbPh8LxWFTS3bqDIe9Iq9GfIfVcWxxnPFFWQ==
+"@vechain/sdk-logging@1.2.0-rc.3":
+  version "1.2.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vechain/sdk-logging/-/sdk-logging-1.2.0-rc.3.tgz#4045e8133f62456dedcf6f39d613b8cfcec17c00"
+  integrity sha512-wvNnkNcJaP/h+NwkC/OQ5kgzasmXNldnHkyCfFLbdB70xTiDvSqfIH6TAzpfwegKUSiHXtRo02snfOI+WOThWQ==
   dependencies:
-    "@vechain/sdk-errors" "1.2.0-rc.2"
+    "@vechain/sdk-errors" "1.2.0-rc.3"
 
-"@vechain/sdk-network@1.2.0-rc.2":
-  version "1.2.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@vechain/sdk-network/-/sdk-network-1.2.0-rc.2.tgz#3f505e1a9bee2d95487a0d4f22b3fff2b9719163"
-  integrity sha512-31cGDJhJsyhZdjDwfjKe0LLK1oLvs4Oa8eo9748YEzfUsz9LvO7AwL7VcVwSdw8mXIqVkmKlsUvmab1Lr4qlYQ==
+"@vechain/sdk-network@1.2.0-rc.3":
+  version "1.2.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@vechain/sdk-network/-/sdk-network-1.2.0-rc.3.tgz#61e4db69ee0319744229f5d5985e18ae7e7b9b92"
+  integrity sha512-HJOdPJ8NfARPHln9z4qLnS555spiy4zerJeN6hKm6Zr2nhaegJhrJsqIhyYJVCt4sezeDyCi1M6rtl3/aFonLA==
   dependencies:
     "@noble/curves" "^1.6.0"
-    "@vechain/sdk-core" "1.2.0-rc.2"
-    "@vechain/sdk-errors" "1.2.0-rc.2"
-    "@vechain/sdk-logging" "1.2.0-rc.2"
+    "@vechain/sdk-core" "1.2.0-rc.3"
+    "@vechain/sdk-errors" "1.2.0-rc.3"
+    "@vechain/sdk-logging" "1.2.0-rc.3"
     abitype "^1.0.6"
     ethers "6.13.4"
     viem "^2.21.45"
