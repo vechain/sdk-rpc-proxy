@@ -1,5 +1,5 @@
 # Stage 1: Build the app
-FROM node:20.17-alpine3.20 AS builder
+FROM node:alpine AS builder
 
 WORKDIR /app
 
@@ -24,7 +24,7 @@ RUN chmod +x ./adjust-packages.sh
 RUN /bin/sh ./adjust-packages.sh ./
 
 # Stage 2: Production image
-FROM node:20.17.0-alpine3.20 AS runner
+FROM node:alpine AS runner
 
 # Install OpenSSL and clean up in a single layer
 RUN apk update && \
