@@ -36,10 +36,10 @@
     "test:unit": "jest --testPathPattern=\"tests/unit/.*\\.unit\\.test\\.ts$\""
   },
   "dependencies": {
-    "@vechain/sdk-core": "1.2.0-rc.3",
-    "@vechain/sdk-errors": "1.2.0-rc.3",
-    "@vechain/sdk-logging": "1.2.0-rc.3",
-    "@vechain/sdk-network": "1.2.0-rc.3",
+    "@vechain/sdk-core": "1.2.0",
+    "@vechain/sdk-errors": "1.2.0",
+    "@vechain/sdk-logging": "1.2.0",
+    "@vechain/sdk-network": "1.2.0",
     "commander": "^12.1.0",
     "cors": "^2.8.5",
     "express": "^4.21.2"
