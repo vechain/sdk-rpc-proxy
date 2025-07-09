@@ -10,6 +10,7 @@ import {
 } from '@vechain/sdk-network';
 import cors from 'cors';
 import express, { type Express, type Request, type Response, type ErrorRequestHandler } from 'express';
+import helmet from 'helmet';
 import defaultProxyConfig from '../default-proxy-config.json';
 import packageJson from '../package.json';
 import { type Config, type RequestBody } from './types';
@@ -94,6 +95,7 @@ function startProxy(): void {
 
     // Start the express proxy server
     const app: Express = express();
+    app.use(helmet());
     app.disable('x-powered-by');
     app.use(
         (cors as (options: cors.CorsOptions) => express.RequestHandler)({
