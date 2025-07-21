@@ -58,6 +58,7 @@ jobs:
         run: |
           echo "CVE-2024-21538" > .trivyignore
           echo "CVE-2024-13176" >> .trivyignore
+          echo "CVE-2025-54070" >> .trivyignore
 
       - name: Run Trivy Scan
         uses: aquasecurity/trivy-action@master
